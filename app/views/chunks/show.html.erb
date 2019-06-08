@@ -1,0 +1,15 @@
+<div class="chunk">
+  <h1 class="title">
+    <%= @chunk.title %>
+  </h1>
+  <div class="metadata">
+    Published <%= time_ago_in_words @chunk.published_at %> ago
+    by <%= link_to @chunk.user.name, @chunk.user %>
+  </div>
+
+  <div class="body">
+    <%= @chunk.body %>
+  </div>
+</div>
+
+<%= @chunk.inspect %>
