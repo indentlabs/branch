@@ -10,18 +10,39 @@
   }
 
   .body {
-    text-align: justify;
+    p {
+      margin: 0;
+      text-align: justify;
+    }
+
+    p.editing ~ *:not(.active) {
+      display: none;
+    }
 
     .branch-point {
       min-height: 30px;
 
-      .hover-container {
+      .hover-container:not(.active) {
         display: none;
+
+        .active-content {
+          display: none;
+        }
+      }
+
+      .hover-container.active {
+        .inactive-content {
+          display: none;
+        }
+
+        .active-content {
+          display: block;
+        }
       }
 
       &:hover {
         .hover-container {
-          display: inline-block;
+          display: block;
         }
       }
     }
