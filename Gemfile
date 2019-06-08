@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
+gem "animate-rails"
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

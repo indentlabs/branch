@@ -5,6 +5,7 @@ class CreateChunks < ActiveRecord::Migration[5.2]
       t.text :body
       t.references :user, foreign_key: true
       t.string :background_color
+      t.string :text_color
       t.datetime :published_at
 
       t.timestamps

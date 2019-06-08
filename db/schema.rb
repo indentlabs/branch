@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_06_08_062625) do
     t.text "body"
     t.integer "user_id"
     t.string "background_color"
+    t.string "text_color"
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

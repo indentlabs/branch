@@ -11,6 +11,20 @@
 
   .body {
     text-align: justify;
+
+    .branch-point {
+      min-height: 30px;
+
+      .hover-container {
+        display: none;
+      }
+
+      &:hover {
+        .hover-container {
+          display: inline-block;
+        }
+      }
+    }
   }
 
   margin-bottom: 300px;

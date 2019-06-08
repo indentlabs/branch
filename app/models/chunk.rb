@@ -7,6 +7,7 @@ class Chunk < ApplicationRecord
       title: 'Genesis',
       body: genesis_story_body,
       background_color: '#000000',
+      text_color: '#FFFFFF',
       published_at: DateTime.now
     )
   end

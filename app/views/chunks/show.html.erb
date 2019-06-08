@@ -8,13 +8,8 @@
   </div>
 
   <div class="body flow-text">
-    <%= @chunk.body.gsub("\n", "<br />").html_safe %>
+    <%= @chunk.body.gsub(/\n+/, render("actions/branch_point")).html_safe %>
   </div>
 
-  <!-- todo partial -->
-  <ul class="actions">
-    <li class="action">
-
-    </li>
-  </ul>
+  <%= render partial: "actions/list" %>
 </div>
