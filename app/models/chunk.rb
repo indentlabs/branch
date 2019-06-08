@@ -1,6 +1,14 @@
 class Chunk < ApplicationRecord
   belongs_to :user
 
+  has_many :actions, 
+    foreign_key: 'previous_chunk_id', 
+    class_name: Action.name
+  
+  has_many :previous_actions,
+    foreign_key: 'next_chunk_id',
+    class_name: Action.name
+
   def self.genesis
     Chunk.create!(
       user: User.genesis,

@@ -1,5 +1,19 @@
 <ul class="actions">
-  <li class="action">
-    Do a thing
+  <% chunk.actions.each do |action| %>
+    <li class="action card">
+      <div class="card-content">
+        <div class="card-title">
+          <%= action.title %>
+        </div>
+        <p>
+          <%= action.description %>
+        </p>
+      </div>
+    </li>
+  <% end %>
+  <li class="card">
+    <div class="card-content">
+      <a href="#">Subscribe to get notified when this story continues...</a>
+    </div>
   </li>
 </ul>

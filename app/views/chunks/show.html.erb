@@ -11,5 +11,5 @@
     <%= @chunk.body.gsub(/\n+/, render("actions/branch_point")).html_safe %>
   </div>
 
-  <%= render partial: "actions/list" %>
+  <%= render partial: "actions/list", locals: { chunk: @chunk } %>
 </div>
