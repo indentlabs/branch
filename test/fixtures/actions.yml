@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  previous_chunk: one
+  next_chunk: one
+
+two:
+  title: MyString
+  description: MyString
+  previous_chunk: two
+  next_chunk: two
