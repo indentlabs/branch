@@ -2,14 +2,19 @@
   <h1 class="title">
     <%= @chunk.title %>
   </h1>
-  <div class="metadata">
+  <div class="metadata grey-text">
     Published <%= time_ago_in_words @chunk.published_at %> ago
     by <%= link_to @chunk.user.name, @chunk.user %>
   </div>
 
-  <div class="body">
-    <%= @chunk.body %>
+  <div class="body flow-text">
+    <%= @chunk.body.gsub("\n", "<br />").html_safe %>
   </div>
-</div>
 
-<%= @chunk.inspect %>
+  <!-- todo partial -->
+  <ul class="actions">
+    <li class="action">
+
+    </li>
+  </ul>
+</div>
