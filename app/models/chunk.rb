@@ -10,7 +10,7 @@ class Chunk < ApplicationRecord
     class_name: Action.name
 
   def self.genesis
-    Chunk.create!(
+    Chunk.find_or_create_by!(
       user: User.genesis,
       title: 'Genesis',
       body: genesis_story_body,

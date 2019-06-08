@@ -8,7 +8,11 @@
   </div>
 
   <div class="body flow-text">
-    <%= @chunk.body.gsub(/\n+/, render("actions/branch_point")).html_safe %>
+    <%= 
+      @chunk.body.gsub(/\n+/, 
+        render(partial: "actions/branch_point", locals: { chunk: @chunk })
+      ).html_safe
+    %>
   </div>
 
   <%= render partial: "actions/list", locals: { chunk: @chunk } %>

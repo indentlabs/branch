@@ -1,5 +1,5 @@
 <ul class="actions">
-  <% chunk.actions.each do |action| %>
+  <% chunk.actions.select(&:persisted?).each do |action| %>
     <li class="action card">
       <div class="card-content">
         <div class="card-title">

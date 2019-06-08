@@ -6,15 +6,17 @@
         Click to branch from here
       </div>
       <div class="card-content active-content">
-        <div class="branch-text" contenteditable="true">
-          <p>Continue the story from here...</p>
-        </div>
-        <div class="submit">
-          <a href="#" class="right waves-effect waves-light btn green white-text">
-            Save your branch
-          </a>
-        </div>
-        <div class="clearfix"></div>
+        <%= form_for chunk.actions.new do |f| %>
+          <div class="branch-text" contenteditable="true">
+            <p>Continue the story from here...</p>
+          </div>
+          <div class="submit">
+            <%= f.button "Save your branch", 
+                  class: 'js-submit-branch right waves-effect waves-light btn green white-text'
+            %>
+          </div>
+          <div class="clearfix"></div>
+        <% end %>
       </div>
     </div>
   </span>
