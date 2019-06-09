@@ -1,3 +1,14 @@
+<% if @previous_chunk %>
+  <div class="chunk grey-text" data-id="<%= @previous_chunk.id %>">
+    <h1 class="title">
+      <%= @previous_chunk.title %>
+    </h1>
+    <div class="body flow-text">
+      <%= @previous_chunk.body.html_safe %>
+    </div>
+  </div>
+<% end %>
+
 <div class="chunk" data-id="<%= @chunk.id %>">
   <h1 class="title">
     <%= @chunk.title %>

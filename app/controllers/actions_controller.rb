@@ -1,4 +1,12 @@
 class ActionsController < ApplicationController
+  def show
+    @action = Action.find(params[:id].to_i)
+
+    # handle on-approach logic
+
+    redirect_to chunk_path(@action.next_chunk, from_action: @action.id)
+  end
+
   def create
     old_chunk = Chunk.find_by(id: branch_params['prior_chunk_id'].to_i)
 

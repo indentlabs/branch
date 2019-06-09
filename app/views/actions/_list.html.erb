@@ -2,7 +2,7 @@
   <% chunk.actions.select(&:persisted?).each do |action| %>
     <li class="action card">
       <div class="card-title">
-        <%= link_to(action.next_chunk) do %>
+        <%= link_to(action) do %>
           <i class="material-icons right md-36">trending_flat</i>
           <%= action.title %>
         <% end %>
