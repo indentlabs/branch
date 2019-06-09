@@ -1,4 +1,7 @@
 class Action < ApplicationRecord
-  belongs_to :previous_chunk
-  belongs_to :next_chunk
+  # TODO figure out how to set up proper relations here
+  belongs_to :previous_chunk, class_name: Chunk.name
+  belongs_to :next_chunk,     class_name: Chunk.name
+
+  attr_accessor :prior_chunk_text
 end

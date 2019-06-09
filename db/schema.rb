@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 2019_06_08_062625) do
     t.integer "next_chunk_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["next_chunk_id"], name: "index_actions_on_next_chunk_id"
-    t.index ["previous_chunk_id"], name: "index_actions_on_previous_chunk_id"
   end
 
   create_table "chunks", force: :cascade do |t|

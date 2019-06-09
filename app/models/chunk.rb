@@ -12,7 +12,7 @@ class Chunk < ApplicationRecord
   def self.genesis
     Chunk.find_or_create_by!(
       user: User.genesis,
-      title: 'Genesis',
+      title: 'Strawberries',
       body: genesis_story_body,
       background_color: '#000000',
       text_color: '#FFFFFF',

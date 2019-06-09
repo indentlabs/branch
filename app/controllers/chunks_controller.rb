@@ -1,6 +1,6 @@
 class ChunksController < ApplicationController
   def genesis
-    redirect_to chunk_path(id: Chunk.first.id)
+    redirect_to chunk_path(id: Chunk.genesis.id)
   end
 
   def show

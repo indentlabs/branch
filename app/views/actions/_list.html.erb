@@ -1,19 +1,19 @@
 <ul class="actions">
   <% chunk.actions.select(&:persisted?).each do |action| %>
     <li class="action card">
-      <div class="card-content">
-        <div class="card-title">
+      <div class="card-title">
+        <%= link_to(action.next_chunk) do %>
+          <i class="material-icons right md-36">trending_flat</i>
           <%= action.title %>
-        </div>
-        <p>
-          <%= action.description %>
-        </p>
+        <% end %>
       </div>
     </li>
   <% end %>
-  <li class="card">
-    <div class="card-content">
-      <a href="#">Subscribe to get notified when this story continues...</a>
-    </div>
-  </li>
+  <% if chunk.actions.select(&:persisted?).empty? %>
+    <li class="card">
+      <div class="card-content">
+        <a href="#">Subscribe to get notified when this story continues...</a>
+      </div>
+    </li>
+  <% end %>
 </ul>

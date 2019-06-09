@@ -3,8 +3,8 @@ class CreateActions < ActiveRecord::Migration[5.2]
     create_table :actions do |t|
       t.string :title
       t.string :description
-      t.references :previous_chunk, foreign_key: true
-      t.references :next_chunk, foreign_key: true
+      t.integer :previous_chunk_id
+      t.integer :next_chunk_id
 
       t.timestamps
     end
