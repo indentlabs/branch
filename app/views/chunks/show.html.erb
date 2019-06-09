@@ -1,10 +1,7 @@
 <% if @previous_chunk %>
-  <div class="chunk grey-text" data-id="<%= @previous_chunk.id %>">
-    <h1 class="title">
-      <%= @previous_chunk.title %>
-    </h1>
+  <div class="chunk" data-id="<%= @previous_chunk.id %>">
     <div class="body flow-text">
-      <%= @previous_chunk.body.html_safe %>
+      <%= link_to @previous_chunk.body.html_safe, @previous_chunk, class: 'grey-text' %>
     </div>
   </div>
 <% end %>
