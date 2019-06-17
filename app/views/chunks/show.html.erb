@@ -1,27 +1,32 @@
-<% if @previous_chunk %>
-  <div class="chunk" data-id="<%= @previous_chunk.id %>">
-    <div class="body flow-text">
-      <%= link_to @previous_chunk.body.html_safe, @previous_chunk, class: 'grey-text' %>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <% if @previous_chunk %>
+      <div class="chunk" data-id="<%= @previous_chunk.id %>">
+        <div class="body flow-text">
+          <%= link_to @previous_chunk.body.html_safe, @previous_chunk, class: 'grey-text' %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="chunk" data-id="<%= @chunk.id %>">
+      <h1 class="title">
+        <%= @chunk.title %>
+      </h1>
+      <div class="metadata grey-text">
+        Published <%= time_ago_in_words @chunk.published_at %> ago
+        by <%= link_to @chunk.user.name, @chunk.user %>
+      </div>
+
+      <div class="body flow-text">
+        <%= 
+          @chunk.body.gsub(/\n+/, 
+            render(partial: "actions/branch_point", locals: { chunk: @chunk })
+          ).html_safe
+        %>
+      </div>
+
     </div>
   </div>
-<% end %>
-
-<div class="chunk" data-id="<%= @chunk.id %>">
-  <h1 class="title">
-    <%= @chunk.title %>
-  </h1>
-  <div class="metadata grey-text">
-    Published <%= time_ago_in_words @chunk.published_at %> ago
-    by <%= link_to @chunk.user.name, @chunk.user %>
-  </div>
-
-  <div class="body flow-text">
-    <%= 
-      @chunk.body.gsub(/\n+/, 
-        render(partial: "actions/branch_point", locals: { chunk: @chunk })
-      ).html_safe
-    %>
-  </div>
-
-  <%= render partial: "actions/list", locals: { chunk: @chunk } %>
 </div>
+
+<%= render partial: "actions/list", locals: { chunk: @chunk } %>

@@ -43,7 +43,7 @@ class ActionsController < ApplicationController
     )
     old_chunk.actions.create!(
       title:         branch_params[:title].presence || "Fork by Bob",
-      description:   "Some description text",
+      description:   branch_params[:description],
       next_chunk_id: forked_chunk.id
     )
 
@@ -54,7 +54,7 @@ class ActionsController < ApplicationController
 
   def branch_params
     params.require(:branch).permit(
-      :prior_chunk_id, :prior_chunk_text, :new_chunk_text, :title
+      :prior_chunk_id, :prior_chunk_text, :new_chunk_text, :title, :description
     )
   end
 end
