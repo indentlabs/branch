@@ -1,0 +1,46 @@
+<div id="subscribe-modal" class="modal">
+  <div class="modal-content">
+    <h4>Subscribe to <%= chunk.title %> updates</h4>
+    <p>
+      On Branch, stories can be continued by anyone at any time. You may have reached the end of <%= chunk.title %> for now,
+      but you can subscribe to be notified whenever an author continues the story. You could also continue it yourself!
+    </p>
+    <p>
+      There are two options for subscribing: you can subscribe on-site and receive notifications of story updates when you
+      log in, or you can subscribe by email to receive the latest updates to your stories directly in your inbox.
+    </p>
+    <p>
+      TODO: Also RSS?
+    </p>
+    <form action="#">
+      <p>
+        <label>
+          <input name="group1" type="radio" checked />
+          <span>I <strong>don't want updates</strong> to this story</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="group1" type="radio" />
+          <span>I want <strong>email updates</strong> to this story</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="group1" type="radio"  />
+          <span>I want <strong>site notifications</strong> for this story</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="group1" type="radio" />
+          <span>I want <strong>both site and email notifications</strong> for this story &hearts;</span>
+        </label>
+      </p>
+    </form>
+          
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save updates preference</a>
+  </div>
+</div>

@@ -16,4 +16,16 @@
       </div>
     </div>
   <% end %>
+
+  <% if chunk.actions.select(&:persisted?).empty? %>
+    <div class="col s12 m8 offset-m2">
+      <div class="card">
+        <div class="card-content">
+          <a class="waves-effect waves-light modal-trigger" href="#subscribe-modal">Subscribe to get notified when this story continues...</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+<%= render partial: 'chunks/subscribe_modal', locals: { chunk: chunk } %>
