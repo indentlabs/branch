@@ -23,6 +23,10 @@ $(document).ready(function () {
     }
   });
 
+  $('.show-advanced-options-link').click(function () {
+    $(this).parent().find('.advanced-options').toggle();
+  });
+
   $('.js-submit-branch').click(function () {
     var card_container  = $(this).closest('.card-content');
     var branch_text     = card_container.find('.branch-text').html();

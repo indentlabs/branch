@@ -54,6 +54,22 @@
           margin-bottom: 20px;
         }
       }
+
+      .show-advanced-options-link {
+        font-size: 0.6em;
+      }
+
+      .advanced-options {
+        display: none;
+
+        .option-title {
+          font-size: 1em;
+        }
+
+        .help-text {
+          font-size: 0.6em;
+        }
+      }
     }
   }
 }
