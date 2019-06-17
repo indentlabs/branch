@@ -7,6 +7,7 @@
       </div>
       <div class="card-content active-content">
         <%= form_for chunk.actions.new do |f| %>
+          <input type="text" name="branch[title]" placeholder="Branch title" />
           <div class="branch-text" contenteditable="true">
             <p>Continue the story from here...</p>
           </div>

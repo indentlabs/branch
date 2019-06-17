@@ -8,9 +8,9 @@ class ActionsController < ApplicationController
   end
 
   def create
-    old_chunk = Chunk.find_by(id: branch_params['prior_chunk_id'].to_i)
+    old_chunk = Chunk.find_by(id: branch_params[:prior_chunk_id].to_i)
 
-    old_chunk_new_text = branch_params['prior_chunk_text'].gsub("\r", "") + "\n"
+    old_chunk_new_text = branch_params[:prior_chunk_text].gsub("\r", "") + "\n"
     new_chunk_text = old_chunk.body.gsub("\r", "").split(old_chunk_new_text).drop(1).join("\n")
 
     # Split the old chunk off into two chunks (unless we're branching at the end!)
@@ -35,14 +35,14 @@ class ActionsController < ApplicationController
     # Create the forked chunk
     forked_chunk = Chunk.create!(
       title:            old_chunk.title,
-      body:             "<p>" + branch_params['new_chunk_text'].gsub("\r", ""),
+      body:             "<p>" + branch_params[:new_chunk_text].gsub("\r", ""),
       user:             old_chunk.user, #todo current_user
       background_color: old_chunk.background_color,
       text_color:       old_chunk.text_color,
       published_at:     DateTime.now
     )
     old_chunk.actions.create!(
-      title:         "Fork by Bob",
+      title:         branch_params[:title].presence || "Fork by Bob",
       description:   "Some description text",
       next_chunk_id: forked_chunk.id
     )
@@ -54,7 +54,7 @@ class ActionsController < ApplicationController
 
   def branch_params
     params.require(:branch).permit(
-      :prior_chunk_id, :prior_chunk_text, :new_chunk_text
+      :prior_chunk_id, :prior_chunk_text, :new_chunk_text, :title
     )
   end
 end
