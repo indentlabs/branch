@@ -42,8 +42,8 @@ class ActionsController < ApplicationController
       published_at:     DateTime.now
     )
     old_chunk.actions.create!(
-      title:         branch_params[:title].presence || "Fork by Bob",
-      description:   branch_params[:description],
+      title:         branch_params[:title].presence || old_chunk.title || "Fork by Bob",
+      description:   branch_params[:description] || "No description",
       next_chunk_id: forked_chunk.id
     )
 
