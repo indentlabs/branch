@@ -9,6 +9,14 @@
     margin-bottom: 30px;
   }
 
+  &.previous-chunk {
+    .body {
+      p {
+        margin: 0 0 10px 0;
+      }
+    }
+  }
+
   .body {
     p {
       margin: 0;

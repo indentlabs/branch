@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col s12 m8 offset-m2">
     <% if @previous_chunk %>
-      <div class="chunk" data-id="<%= @previous_chunk.id %>">
+      <div class="chunk previous-chunk" data-id="<%= @previous_chunk.id %>">
         <div class="body flow-text">
           <%= link_to @previous_chunk.body.html_safe, @previous_chunk, class: 'grey-text' %>
         </div>
