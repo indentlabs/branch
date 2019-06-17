@@ -1,6 +1,6 @@
 class ChunksController < ApplicationController
   def genesis
-    redirect_to chunk_path(id: Chunk.genesis.id)
+    redirect_to chunk_path(id: Chunk.first.try(:id).presence || Chunk.genesis.id)
   end
 
   def show
