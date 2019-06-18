@@ -14,7 +14,9 @@ class ActionsController < ApplicationController
     new_chunk_text = old_chunk.body
       .gsub("\r", "")
       .gsub('<div>', '<p>')
-      .gsub('</div>', '</div>')
+      .gsub('</div>', '</p>')
+      .gsub('<p></p>\n', '')
+      .gsub('<p><br></p>', '')
       .split(old_chunk_new_text)
       .drop(1)
       .join("\n")

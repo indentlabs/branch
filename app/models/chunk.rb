@@ -8,6 +8,21 @@ class Chunk < ApplicationRecord
   has_many :previous_actions,
     foreign_key: 'next_chunk_id',
     class_name: Action.name
+  
+  before_save :standardize_body!
+  def standardize_body!
+    self.body = self.body
+      .gsub("\r", "")
+      .gsub('<div>', '<p>')
+      .gsub('</div>', '</p>')
+    
+    self.body = ActionController::Base.helpers.sanitize(self.body, 
+      tags: %w(p), 
+      attributes: %w())
+        .gsub("<p></p>\n", '')
+        .gsub('<p><br></p>', '')
+        .gsub('</p><p>', "</p>\n<p>")
+  end
 
   def self.genesis
     Chunk.find_or_create_by!(
