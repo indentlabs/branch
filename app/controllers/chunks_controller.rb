@@ -1,4 +1,6 @@
 class ChunksController < ApplicationController
+  before_action :initialize_chunk_history
+
   before_action :set_chunk,           only: [:show]
   before_action :set_action,          only: [:show]
   before_action :set_previous_chunk,  only: [:show]
@@ -14,6 +16,10 @@ class ChunksController < ApplicationController
 
   private
 
+  def initialize_chunk_history
+    session[:chunk_history] ||= []
+  end
+
   def set_chunk
     @chunk = Chunk.find_by(id: params[:id].to_i).presence || Chunk.genesis
   end
@@ -23,17 +29,19 @@ class ChunksController < ApplicationController
   end
 
   def set_previous_chunk
+    history_index = session[:chunk_history].index(@chunk.id)
+    history_until_this_point = history_index.nil? ? [] : session[:chunk_history].first(history_index)
+
     if @action
       @previous_chunk = @action.previous_chunk
-    elsif session[:chunk_history] && session[:chunk_history].reject {|c| c == @chunk.id }.any?
-      @previous_chunk = Chunk.find(session[:chunk_history].reject {|c| c == @chunk.id }.last)
+    elsif session[:chunk_history] && history_until_this_point.any?
+      @previous_chunk = Chunk.find(history_until_this_point.last)
     else
       @previous_chunk = nil
     end
   end
 
   def track_chunk_history
-    session[:chunk_history] ||= []
     if session[:chunk_history].include?(@chunk.id)
       # We backtracked to a previous chunk, so lets do so in the history too
       history_index = session[:chunk_history].index(@chunk.id)
