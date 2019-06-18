@@ -31,14 +31,20 @@ class Chunk < ApplicationRecord
   end
 
   def self.genesis
-    Chunk.find_or_create_by!(
+    genesis = Chunk.find_or_initialize_by(
       user:              User.genesis,
       title:             'Strawberries',
-      body:              genesis_story_body,
       background_color:  '#FFFFFF',
-      text_color:        '#000000',
-      published_at:      DateTime.now
+      text_color:        '#000000'
     )
+
+    genesis.update(
+      body:         genesis_story_body,
+      published_at: DateTime.now
+    ) unless genesis.persisted?
+
+    genesis.save!
+    genesis
   end
 
   def self.genesis_story_body
