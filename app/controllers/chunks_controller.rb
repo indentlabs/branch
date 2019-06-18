@@ -25,7 +25,7 @@ class ChunksController < ApplicationController
   def set_previous_chunk
     if @action
       @previous_chunk = @action.previous_chunk
-    elsif session[:chunk_history] && session[:chunk_history].any?
+    elsif session[:chunk_history] && session[:chunk_history].reject {|c| c == @chunk.id }.any?
       @previous_chunk = Chunk.find(session[:chunk_history].reject {|c| c == @chunk.id }.last)
     else
       @previous_chunk = nil
@@ -41,7 +41,6 @@ class ChunksController < ApplicationController
     else
       if session[:chunk_history].last == @chunk.id
         # The user just refreshed the page; no need to add it again
-
       elsif @previous_chunk && session[:chunk_history].last == @previous_chunk.id
         # Add this chunk to the history
         session[:chunk_history] << @chunk.id
