@@ -4,10 +4,10 @@
       <div class="background">
         <%= image_tag 'sidenav-header.png' %>
       </div>
-      <%= link_to User.first do %>
-        <%= image_tag User.first.image_url, class: 'circle' %>
-        <span class="white-text name"><%= User.first.name %></span>
-        <span class="white-text email"><%= User.first.email %></span>
+      <%= link_to User.first, class: 'black-text' do %>
+        <%= image_tag User.first.image_url, class: 'hoverable circle' %>
+        <span class="name"><%= User.first.name %></span>
+        <span class="email"><%= User.first.email %></span>
       <% end %>
     </div>
   </li>

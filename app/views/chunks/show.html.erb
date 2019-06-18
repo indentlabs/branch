@@ -15,6 +15,7 @@
       <div class="metadata grey-text">
         Published <%= time_ago_in_words @chunk.published_at %> ago
         by <%= link_to @chunk.user.name, @chunk.user %>
+        <a href="#" class="green-outline-btn">Follow</a>
       </div>
 
       <div class="body flow-text" 
