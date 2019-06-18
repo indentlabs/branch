@@ -3,11 +3,13 @@ class Chunk < ApplicationRecord
 
   has_many :actions, 
     foreign_key: 'previous_chunk_id', 
-    class_name: Action.name
+    class_name: Action.name,
+    dependent: :destroy
   
   has_many :previous_actions,
     foreign_key: 'next_chunk_id',
-    class_name: Action.name
+    class_name: Action.name,
+    dependent: :destroy
   
   before_save :standardize_body!
   def standardize_body!
