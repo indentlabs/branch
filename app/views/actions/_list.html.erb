@@ -1,19 +1,19 @@
 <div class="row action-list">
   <% chunk.actions.select(&:persisted?).each do |action| %>
     <div class="col s12 m4">
-      <div class="hoverable card">
-        <div class="card-content">
-          <div class="card-title">
-            <%= link_to action do %>
+      <%= link_to action do %>
+        <div class="hoverable card">
+          <div class="card-content">
+            <div class="card-title">
               <i class="material-icons right md-36">trending_flat</i>
               <%= action.title %>
-            <% end %>
+            </div>
+            <p class="chunk-preview grey-text">
+              <%= action.description.presence || 'No description' %>
+            </p>
           </div>
-          <p class="chunk-preview grey-text">
-            <%= action.description.presence || 'No description' %>
-          </p>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
 
