@@ -20,6 +20,7 @@ class ActionsController < ApplicationController
       .split(old_chunk_new_text)
       .drop(1)
       .join("\n")
+      .strip
 
     # Split the old chunk off into two chunks (unless we're branching at the end!)
     old_chunk.update(body: old_chunk_new_text) unless old_chunk.body == old_chunk_new_text
