@@ -43,15 +43,15 @@ class ActionsController < ApplicationController
     # Create the forked chunk
     forked_chunk = Chunk.create!(
       title:            old_chunk.title,
-      body:             "<p>" + branch_params[:new_chunk_text].gsub("\r", ""),
+      body:             "<p>" + branch_params[:new_chunk_text],
       user:             old_chunk.user, #todo current_user
-      background_color: old_chunk.background_color,
-      text_color:       old_chunk.text_color,
+      background_color: branch_params[:background_color] || old_chunk.background_color,
+      text_color:       branch_params[:text_color]       || old_chunk.text_color,
       published_at:     DateTime.now
     )
     old_chunk.actions.create!(
       title:         branch_params[:title].presence || old_chunk.title || "Fork by Bob",
-      description:   branch_params[:description] || "No description",
+      description:   branch_params[:description]    || "No description",
       next_chunk_id: forked_chunk.id
     )
 
@@ -62,7 +62,9 @@ class ActionsController < ApplicationController
 
   def branch_params
     params.require(:branch).permit(
-      :prior_chunk_id, :prior_chunk_text, :new_chunk_text, :title, :description
+      :prior_chunk_id, :prior_chunk_text, :new_chunk_text, 
+      :title, :description,
+      :text_color, :background_color
     )
   end
 end

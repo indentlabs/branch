@@ -9,7 +9,7 @@
     <% end %>
 
     <div class="chunk" data-id="<%= @chunk.id %>">
-      <h1 class="title">
+      <h1 class="title" style="color: <%= @chunk.text_color || '#000000' %>">
         <%= @chunk.title %>
       </h1>
       <div class="metadata grey-text">
@@ -17,7 +17,8 @@
         by <%= link_to @chunk.user.name, @chunk.user %>
       </div>
 
-      <div class="body flow-text">
+      <div class="body flow-text" 
+           style="color: <%= @chunk.text_color || '#000000' %>">
         <%= 
           @chunk.body
             .gsub('<div>',  '<p>')
@@ -33,3 +34,7 @@
 </div>
 
 <%= render partial: "actions/list", locals: { chunk: @chunk } %>
+
+<%= content_for :body_modifiers do %>
+  style="background: <%= @chunk.background_color || '#FFFFFFF' %>"
+<% end %>
