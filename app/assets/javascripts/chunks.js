@@ -2,12 +2,15 @@ $(document).ready(function () {
   $('body').click(function () {
     $('.active').removeClass('active');
     $('.editing').removeClass('editing');
+
+    $('.action-list').show();
   });
 
   $('.hover-container').click(function() {
     $(this).addClass('active');
     $(this).closest('.branch-point').addClass('active');
     $(this).closest('.branch-point').prev().addClass('editing');
+    $('.action-list').hide();
 
     var chunk_container = $(this).closest('.body');
 
