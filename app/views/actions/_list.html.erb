@@ -1,7 +1,7 @@
 <div class="row action-list">
   <% chunk.actions.select(&:persisted?).each do |action| %>
     <div class="col s12 m4">
-      <%= link_to action do %>
+      <%= link_to action, class: 'green-text text-darken-3' do %>
         <div class="hoverable card">
           <div class="card-content">
             <div class="card-title">
