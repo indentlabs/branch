@@ -9,7 +9,7 @@
               <%= action.title %>
             </div>
             <p class="chunk-preview grey-text">
-              <%= action.description.presence || 'No description' %>
+              <%= action.description.presence || "Written by #{action.next_chunk.user.name}" %>
             </p>
           </div>
         </div>
