@@ -11,7 +11,13 @@ class ActionsController < ApplicationController
     old_chunk = Chunk.find_by(id: branch_params[:prior_chunk_id].to_i)
 
     old_chunk_new_text = branch_params[:prior_chunk_text].gsub("\r", "") + "\n"
-    new_chunk_text = old_chunk.body.gsub("\r", "").split(old_chunk_new_text).drop(1).join("\n")
+    new_chunk_text = old_chunk.body
+      .gsub("\r", "")
+      .gsub('<div>', '<p>')
+      .gsub('</div>', '</div>')
+      .split(old_chunk_new_text)
+      .drop(1)
+      .join("\n")
 
     # Split the old chunk off into two chunks (unless we're branching at the end!)
     old_chunk.update(body: old_chunk_new_text) unless old_chunk.body == old_chunk_new_text

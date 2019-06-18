@@ -19,9 +19,12 @@
 
       <div class="body flow-text">
         <%= 
-          @chunk.body.gsub(/\n+/, 
-            render(partial: "actions/branch_point", locals: { chunk: @chunk })
-          ).html_safe
+          @chunk.body
+            .gsub('<div>',  '<p>')
+            .gsub('</div>', '</p>')
+            .gsub(/\n+/, 
+              render(partial: "actions/branch_point", locals: { chunk: @chunk })
+            ).html_safe
         %>
       </div>
 
