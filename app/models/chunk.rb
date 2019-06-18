@@ -14,16 +14,20 @@ class Chunk < ApplicationRecord
   before_save :standardize_body!
   def standardize_body!
     self.body = self.body
-      .gsub("\r", "")
-      .gsub('<div>', '<p>')
-      .gsub('</div>', '</p>')
+      .gsub("\r",      "")
+      .gsub('<div>',   '<p>')
+      .gsub('</div>',  '</p>')
     
     self.body = ActionController::Base.helpers.sanitize(self.body, 
       tags: %w(p), 
       attributes: %w())
-        .gsub("<p></p>\n", '')
-        .gsub('<p><br></p>', '')
-        .gsub('</p><p>', "</p>\n<p>")
+    
+    self.body = self.body
+      .gsub("<p></p>\n",   '')
+      .gsub('<p><br></p>', '')
+      .gsub('</p><p>',     "</p>\n<p>")
+    
+    self.body = self.body.strip + "\n"
   end
 
   def self.genesis
