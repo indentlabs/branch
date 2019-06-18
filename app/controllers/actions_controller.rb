@@ -34,6 +34,10 @@ class ActionsController < ApplicationController
         published_at:     old_chunk.published_at
       )
 
+      # Transfer all existing actions from the truncated chunk to the new continuation of it
+      old_chunk.actions.update_all(previous_chunk_id: new_chunk.id)
+
+      # Create an action from the truncated chunk to its continuation
       old_chunk.actions.create!(
         title:         "Continue reading...",
         description:   "Read the original author's continuation of this story.",
