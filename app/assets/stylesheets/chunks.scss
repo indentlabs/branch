@@ -75,13 +75,16 @@
 
       .advanced-options {
         display: none;
+        color: black;
 
         .option-title {
           font-size: 1em;
+          color: grey;
         }
 
         .help-text {
           font-size: 0.6em;
+          line-height: 1em;
         }
       }
     }
