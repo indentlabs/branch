@@ -20,4 +20,8 @@ class User < ApplicationRecord
     # shim until devise is in place
     "andrew@indentlabs.com"
   end
+
+  def username
+    "@drusepth"
+  end
 end

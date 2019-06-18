@@ -7,7 +7,7 @@
       <%= link_to User.first, class: 'black-text' do %>
         <%= image_tag User.first.image_url, class: 'hoverable circle' %>
         <span class="name"><%= User.first.name %></span>
-        <span class="email"><%= User.first.email %></span>
+        <span class="email"><%= User.first.username %></span>
       <% end %>
     </div>
   </li>

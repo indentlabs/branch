@@ -2,7 +2,7 @@
   <% chunk.actions.select(&:persisted?).each do |action| %>
     <div class="col s12 m4">
       <%= link_to action, class: 'green-text text-darken-3' do %>
-        <div class="hoverable card">
+        <div class="hoverable card" style="border-bottom: 2px solid green">
           <div class="card-content">
             <div class="card-title">
               <i class="material-icons right md-36">trending_flat</i>
