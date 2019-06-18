@@ -19,11 +19,14 @@
 
   <% if chunk.actions.select(&:persisted?).empty? %>
     <div class="col s12 m8 offset-m2 l6 offset-l3">
-      <div class="card">
-        <div class="card-content">
-          <a class="waves-effect waves-light modal-trigger" href="#subscribe-modal">Subscribe to get notified when this story continues...</a>
+      <%= link_to '#subscribe-modal', class: 'modal-trigger' do %>
+        <div class="hoverable card">
+          <div class="card-content green-text">
+            <i class="material-icons left">notifications</i>
+            Subscribe to get notified when this story continues...
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
 </div>
