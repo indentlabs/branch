@@ -7,4 +7,17 @@ class User < ApplicationRecord
       name: 'Genesis'
     )
   end
+
+  def image_url(size=80)
+    require 'digest/md5'
+    email_md5 = Digest::MD5.hexdigest(email.downcase)
+
+    # 80px is Gravatar's default size
+    "https://www.gravatar.com/avatar/#{email_md5}?d=identicon&s=#{size}".html_safe
+  end
+
+  def email
+    # shim until devise is in place
+    "andrew@indentlabs.com"
+  end
 end

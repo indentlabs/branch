@@ -1,0 +1,43 @@
+<ul id="sidenav" class="sidenav">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <%= image_tag 'sidenav-header.png' %>
+      </div>
+      <%= link_to User.first do %>
+        <%= image_tag User.first.image_url, class: 'circle' %>
+        <span class="white-text name"><%= User.first.name %></span>
+        <span class="white-text email"><%= User.first.email %></span>
+      <% end %>
+    </div>
+  </li>
+  <li>
+    <%= link_to root_path, class: 'waves-effect' do %>
+      <i class="material-icons">home</i>
+      Home
+    <% end %>
+  </li>
+  <li>
+    <a href="#!">
+      <i class="material-icons">description</i>
+      My stories
+    </a>
+  </li>
+  <li>
+    <a href="#!">
+      <i class="material-icons">cake</i>
+      Notifications
+    </a>
+  </li>
+  <li><div class="divider"></div></li>
+  <li>
+    <a class="waves-effect" href="#!">
+      Sign out
+    </a>
+  </li>
+</ul>
+
+<a href="#" data-target="sidenav" class="sidenav-trigger">
+  <i class="small material-icons">menu</i>
+</a>
+      
