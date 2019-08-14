@@ -2,7 +2,13 @@
 
 <div class="center">
   <%= link_to 'View stories', stories_user_path(@user), class: 'green btn' %>
+  
+  <% if user_signed_in? && current_user == @user %>
+    <%= link_to 'Edit profile', '#', class: 'green btn lighten-2' %>
+  <% end %>
 </div>
 
-<h4 class="center">Recent chunks contibuted</h4>
-<%= render partial: 'chunks/chunk_list', locals: { chunks: @user.chunks.order('id desc') } %>
+<% if @user.chunks.any? %>
+  <h4 class="center">Recent chunks contibuted</h4>
+  <%= render partial: 'chunks/chunk_list', locals: { chunks: @user.chunks.order('id desc') } %>
+<% end %>

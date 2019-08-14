@@ -2,14 +2,16 @@
 
 <div class="row">
   <div class="col s10 offset-s1 l4 offset-l4">
-    <p class="justify">
-      This is some information about Branch. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus ligula ut erat sodales sodales. Sed consectetur malesuada volutpat. Sed porta odio mi, ac malesuada purus porta vel. Sed porttitor varius enim et fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum sed elementum enim. Integer tortor odio, viverra sit amet mollis quis, elementum eu lacus. Nulla sit amet arcu eu tortor tempor lobortis sed non tortor. Vivamus non arcu ac arcu malesuada condimentum.
-    </p>
-    <p class="justify">
-      Duis ultrices consequat diam, eu tincidunt dui. Sed a tempor ipsum. Pellentesque semper leo nec dolor fringilla accumsan. Ut sed ipsum volutpat, blandit tortor id, imperdiet nulla. Curabitur vestibulum accumsan sapien sed dictum. Donec vulputate vel dui nec sagittis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean iaculis ipsum ut dui maximus, a ornare nibh sagittis. Nullam quis turpis sit amet tortor cursus luctus sed eget elit.
-    </p>
-    <p class="justify">
-      Start your own adventure below.
+    <% unless user_signed_in? %>
+      <p class="justify">
+        This is some information about Branch. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus ligula ut erat sodales sodales. Sed consectetur malesuada volutpat. Sed porta odio mi, ac malesuada purus porta vel. Sed porttitor varius enim et fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum sed elementum enim. Integer tortor odio, viverra sit amet mollis quis, elementum eu lacus. Nulla sit amet arcu eu tortor tempor lobortis sed non tortor. Vivamus non arcu ac arcu malesuada condimentum.
+      </p>
+      <p class="justify">
+        Duis ultrices consequat diam, eu tincidunt dui. Sed a tempor ipsum. Pellentesque semper leo nec dolor fringilla accumsan. Ut sed ipsum volutpat, blandit tortor id, imperdiet nulla. Curabitur vestibulum accumsan sapien sed dictum. Donec vulputate vel dui nec sagittis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean iaculis ipsum ut dui maximus, a ornare nibh sagittis. Nullam quis turpis sit amet tortor cursus luctus sed eget elit.
+      </p>
+    <% end %>
+    <p class="justify center">
+      Start your next adventure below.
     </p>
   </div>
 </div>
