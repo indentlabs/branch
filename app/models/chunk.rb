@@ -10,7 +10,7 @@ class Chunk < ApplicationRecord
     foreign_key: 'next_chunk_id',
     class_name: Action.name,
     dependent: :destroy
-  
+
   before_save :standardize_body!
   def standardize_body!
     self.body = self.body
