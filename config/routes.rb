@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'static/index'
   get 'actions/create'
+
   resources :chunks
-  resources :actions
-  
+  resources :actions  
   resources :users
 
-  root to: 'chunks#genesis'
+  root to: 'static#index'
 end

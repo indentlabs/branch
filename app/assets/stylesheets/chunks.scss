@@ -90,3 +90,13 @@
     }
   }
 }
+
+/* Helpers for chunks appearing elsewhere around the site */
+.chunk-body {
+  max-height: 140px;
+  overflow: hidden;
+
+  p {
+    margin-bottom: 20px !important;
+  }
+}
