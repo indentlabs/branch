@@ -1,51 +1,50 @@
-<ul id="sidenav" class="sidenav">
-  <li>
-    <div class="user-view">
-      <div class="background">
-        <%= image_tag 'sidenav-header.png' %>
+<% if user_signed_in? %>
+  <ul id="sidenav" class="sidenav">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <%= image_tag 'sidenav-header.png' %>
+        </div>
+        <%= link_to User.first, class: 'black-text' do %>
+          <%= image_tag current_user.image_url, class: 'hoverable circle' %>
+          <span class="name"><%= current_user.name %></span>
+          <span class="email"><%= current_user.username %></span>
+        <% end %>
       </div>
-      <%= link_to User.first, class: 'black-text' do %>
-        <%= image_tag User.first.image_url, class: 'hoverable circle' %>
-        <span class="name"><%= User.first.name %></span>
-        <span class="email"><%= User.first.username %></span>
+    </li>
+    <li>
+      <%= link_to root_path, class: 'waves-effect' do %>
+        <i class="material-icons">home</i>
+        Home
       <% end %>
-    </div>
-  </li>
-  <li>
-    <%= link_to root_path, class: 'waves-effect' do %>
-      <i class="material-icons">home</i>
-      Home
-    <% end %>
-  </li>
-  <li>
-    <a href="#!">
-      <i class="material-icons">description</i>
-      My stories
-    </a>
-  </li>
-  <li>
-    <a href="#!">
-      <i class="material-icons">cake</i>
-      Notifications
-      <span class="badge">0</span>
-    </a>
-  </li>
-  <li>
-    <a href="#!">
-      <i class="material-icons">email</i>
-      Invite friends
-      <span class="badge">10</span>
-    </a>
-  </li>
-  <li><div class="divider"></div></li>
-  <li>
-    <a class="waves-effect" href="#!">
-      Sign out
-    </a>
-  </li>
-</ul>
+    </li>
+    <li>
+      <a href="#!">
+        <i class="material-icons">cake</i>
+        Notifications
+        <span class="badge">0</span>
+      </a>
+    </li>
+    <li>
+      <%= link_to stories_user_path(current_user) do %>
+        <i class="material-icons">description</i>
+        My stories
+      <% end %>
+    </li>
+    <li>
+      <a href="#!">
+        <i class="material-icons">email</i>
+        Invite friends
+        <span class="badge"><%= current_user.invitation_limit %></span>
+      </a>
+    </li>
+    <li><div class="divider"></div></li>
+    <li>
+      <%= link_to 'Sign out', destroy_user_session_path, class: 'waves-effect', method: :delete %>
+    </li>
+  </ul>
 
-<a href="#" data-target="sidenav" class="sidenav-trigger green-text text-darken-3">
-  <i class="small material-icons">menu</i>
-</a>
-      
+  <a href="#" data-target="sidenav" class="sidenav-trigger green-text text-darken-3">
+    <i class="small material-icons">menu</i>
+  </a>
+<% end %>

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_many :chunks, dependent: :destroy
   has_many :actions, through: :chunks, dependent: :destroy
 
@@ -18,11 +19,6 @@ class User < ApplicationRecord
 
     # 80px is Gravatar's default size
     "https://www.gravatar.com/avatar/#{email_md5}?d=identicon&s=#{size}".html_safe
-  end
-
-  def email
-    # shim until devise is in place
-    "andrew@indentlabs.com"
   end
 
   def username
