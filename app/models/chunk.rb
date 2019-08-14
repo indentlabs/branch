@@ -11,8 +11,10 @@ class Chunk < ApplicationRecord
     class_name: Action.name,
     dependent: :destroy
 
-  before_save :standardize_body!
+  before_save  :standardize_body!
   def standardize_body!
+    self.body = self.body.presence || Chunk.default_body
+
     self.body = self.body
       .gsub("\r",      "")
       .gsub('<div>',   '<p>')
@@ -28,6 +30,10 @@ class Chunk < ApplicationRecord
       .gsub('</p><p>',     "</p>\n<p>")
     
     self.body = self.body.strip + "\n"
+  end
+
+  def genesis_chunk?
+    Action.find_by(next_chunk_id: self.id).present?
   end
 
   def self.genesis
@@ -57,7 +63,11 @@ class Chunk < ApplicationRecord
 STORY
   end
 
-  def genesis_chunk?
-    Action.find_by(next_chunk_id: self.id).present?
+  def self.default_title
+    'Title'
+  end
+
+  def self.default_body
+    "<p>Write as little or as much as you'd like!</p>"
   end
 end

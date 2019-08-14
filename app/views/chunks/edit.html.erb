@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col s12 m8 offset-m2 l6 offset-l3">
+    <% if @previous_chunk %>
+      <div class="chunk previous-chunk" data-id="<%= @previous_chunk.id %>">
+        <div class="body flow-text">
+          <%= link_to @previous_chunk.body.html_safe, @previous_chunk, class: 'grey-text' %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_for @chunk do |f| %>
+      <div class="chunk" data-id="<%= @chunk.id %>" id="chunk">
+        <h1 class="title" style="color: <%= @chunk.text_color || '#000000' %>" contenteditable="true">
+          <%= @chunk.title.presence || "Title" %>
+        </h1>
+        <div class="metadata grey-text">
+          <% if @chunk.published_at %>
+            Published <%= time_ago_in_words @chunk.published_at %> ago
+          <% end %>
+          by <%= link_to @chunk.user.name, @chunk.user %>
+        </div>
+
+        <div class="body flow-text" 
+            style="color: <%= @chunk.text_color || '#000000' %>"
+            contenteditable="true">
+          <%=
+            @chunk.body
+              .gsub('<div>',  '<p>')
+              .gsub('</div>', '</p>')
+              .html_safe
+          %>
+        </div>
+
+        <div class="center">
+          <%= f.hidden_field :title %>
+          <%= f.hidden_field :body %>
+
+          <%= f.button 'Save chunk', class: 'btn green js-save-chunk' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= content_for :body_modifiers do %>
+  style="background: <%= @chunk.background_color || '#FFFFFFF' %>"
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('html, body').animate({
+      scrollTop: $('#chunk').offset().top
+    }, 'fast');
+
+    $('.js-save-chunk').click(function () {
+      var chunk = $(this).closest('.chunk');
+
+      var title = chunk.find('.title').text().trim();
+      var body  = chunk.find('.body').html().trim();
+
+      chunk.find('input#chunk_title').val(title);
+      chunk.find('input#chunk_body').val(body);
+
+      chunk.closest('form').submit();
+    });
+  });
+</script>

@@ -4,6 +4,8 @@
   font-variant: normal; 
   font-weight: 500; 
   line-height: 2.5em;
+
+  margin-bottom: 20px;
   
   .title {
     margin-bottom: 0;
@@ -24,6 +26,8 @@
   }
 
   .body {
+    min-height: 300px;
+
     p {
       margin: 0;
       text-align: justify;

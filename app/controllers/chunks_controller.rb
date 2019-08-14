@@ -1,7 +1,8 @@
 class ChunksController < ApplicationController
   before_action :initialize_chunk_history
 
-  before_action :set_chunk,           only: [:show]
+  before_action :set_chunk,           only: [:show, :edit, :update]
+
   before_action :set_action,          only: [:show]
   before_action :set_previous_chunk,  only: [:show]
 
@@ -14,7 +15,28 @@ class ChunksController < ApplicationController
   def show
   end
 
+  def new
+    chunk = current_user.chunks.create(
+      title: Chunk.default_title, 
+      body:  Chunk.default_body
+    )
+    redirect_to edit_chunk_path(chunk)
+  end
+
+  def update
+    @chunk.update(chunk_params)
+
+    redirect_to @chunk
+  end
+
+  def edit
+  end
+
   private
+
+  def chunk_params
+    params.require(:chunk).permit(:title, :body)
+  end
 
   def initialize_chunk_history
     session[:chunk_history] ||= []

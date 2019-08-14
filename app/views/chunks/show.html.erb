@@ -13,9 +13,12 @@
         <%= @chunk.title %>
       </h1>
       <div class="metadata grey-text">
-        Published <%= time_ago_in_words @chunk.published_at %> ago
+        <% if @chunk.published_at %>
+          Published <%= time_ago_in_words @chunk.published_at %> ago
+        <% end %>
         by <%= link_to @chunk.user.name, @chunk.user %>
         <a href="#" class="green-outline-btn hoverable">Follow</a>
+        <%= link_to 'Edit this chunk', edit_chunk_path(@chunk), class: 'orange-outline-btn hoverable' if user_signed_in? && @chunk.user == current_user %>
       </div>
 
       <div class="body flow-text" 
