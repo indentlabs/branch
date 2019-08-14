@@ -1,4 +1,8 @@
 <h3 class="green-text center"><%= @user.name %></h3>
 
+<div class="center">
+  <%= link_to 'View stories', stories_user_path(@user), class: 'green btn' %>
+</div>
+
 <h4 class="center">Recent chunks contibuted</h4>
 <%= render partial: 'chunks/chunk_list', locals: { chunks: @user.chunks.order('id desc') } %>

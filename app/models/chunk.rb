@@ -56,4 +56,8 @@ class Chunk < ApplicationRecord
 <p>Five strawberries, I thought. I was very hungry; I hadn’t eaten all day. It was a trade-off between time and food. If I waited longer, I could have more food to eat. I was smarter than the other kids; I knew to wait would be the smarter choice if I could stand it. I nodded to the professor and he left without another word.</p>
 STORY
   end
+
+  def genesis_chunk?
+    Action.find_by(next_chunk_id: self.id).present?
+  end
 end
