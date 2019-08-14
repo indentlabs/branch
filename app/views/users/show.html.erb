@@ -1,0 +1,4 @@
+<h3 class="green-text center"><%= @user.name %></h3>
+
+<h4 class="center">Recent chunks contibuted</h4>
+<%= render partial: 'chunks/chunk_list', locals: { chunks: @user.chunks.order('id desc') } %>
