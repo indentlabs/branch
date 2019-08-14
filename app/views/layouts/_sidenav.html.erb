@@ -32,11 +32,11 @@
       <% end %>
     </li>
     <li>
-      <a href="#!">
+      <%= link_to invite_users_path do %>
         <i class="material-icons">email</i>
         Invite friends
         <span class="badge"><%= current_user.invitation_limit %></span>
-      </a>
+      <% end %>
     </li>
     <li><div class="divider"></div></li>
     <li>

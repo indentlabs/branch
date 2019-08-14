@@ -1,0 +1,18 @@
+<h3 class="center">Invite friends</h3>
+
+
+<div class="row">
+  <div class="col s10 offset-s1 m4 offset-m4">
+    <div class="card">
+      <div class="card-content">
+        <p>
+          You have <%= pluralize current_user.invitation_limit, 'invitation' %> remaining.
+        </p>
+
+        <% if current_user.invitation_limit > 0 %>
+          <%= render partial: 'devise/invitations/form', locals: { resource: current_user, resource_name: :user } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
