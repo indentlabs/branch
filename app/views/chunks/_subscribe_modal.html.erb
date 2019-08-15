@@ -26,18 +26,20 @@
           <span>I want <strong>email updates</strong> to this story</span>
         </label>
       </p>
-      <p>
-        <label>
-          <input name="group1" type="radio"  />
-          <span>I want <strong>site notifications</strong> for this story</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="group1" type="radio" />
-          <span>I want <strong>both site and email notifications</strong> for this story &hearts;</span>
-        </label>
-      </p>
+      <% if user_signed_in? %>
+        <p>
+          <label>
+            <input name="group1" type="radio"  />
+            <span>I want <strong>site notifications</strong> for this story</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="group1" type="radio" />
+            <span>I want <strong>both site and email notifications</strong> for this story &hearts;</span>
+          </label>
+        </p>
+      <% end %>
     </form>
           
   </div>

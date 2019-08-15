@@ -3,20 +3,20 @@
 </h3>
 
 <div class="row">
-  <div class="col s10 offset-s1">
+  <div class="col s10 offset-s1 l6 offset-l3">
     <ul class="tabs tabs-fixed-width">
-      <li class="tab col s3">
+      <li class="tab">
         <a href="#genesis-chunks">Genesis chunks</a>
       </li>
-      <li class="tab col s3">
+      <li class="tab">
         <a href="#contributed-chunks">Contributed chunks</a>
       </li>
     </ul>
   </div>
-  <div id="genesis-chunks" class="col s12">
+  <div id="genesis-chunks" class="col s12 l8 offset-l2">
     <%= render partial: 'chunks/chunk_list', locals: { chunks: @genesis_chunks } %>
   </div>
-  <div id="contributed-chunks" class="col s12">
+  <div id="contributed-chunks" class="col s12 l8 offset-l2">
     <%= render partial: 'chunks/chunk_list', locals: { chunks: @contributed_chunks } %>  
   </div>
 </div>
