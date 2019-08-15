@@ -4,14 +4,14 @@
       <div class="hoverable card" style="background: <%= chunk.background_color %>; color: <%= chunk.text_color %>">
         <div class="card-content">
           <span class="card-title">
-            <%= link_to chunk.title, chunk, class: 'orange-text' %><br />
+            <%= link_to chunk.title.presence || Chunk.default_title, chunk, class: 'orange-text' %><br />
             <small>
               by <%= link_to chunk.user.name, chunk.user, class: 'orange-text' %>
               & <%= pluralize 'N', 'other' %>
             </small>
           </span>
           <div class="chunk-body">
-            <%= chunk.body.html_safe %>
+            <%= (chunk.body.presence || Chunk.default_body).html_safe %>
           </div>
         </div>
         <%= link_to chunk, class: 'orange-text text-lighten-2' do %>

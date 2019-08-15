@@ -1,61 +1,63 @@
 <div class='branch-point'>
-  <span class='hover-container grey-text'>
-    <div class="card animated flipInX">
-      <div class="card-content inactive-content">
-        <i class="material-icons right r90 md-36 green-text">call_split</i>
-        Click to branch from here
-      </div>
-      <div class="card-content active-content">
-        <%= form_for chunk.actions.new do |f| %>
-          <input type="text" name="branch[title]" placeholder="Branch title" autocomplete="off" />
-          <div class="branch-text" contenteditable="true">
-            <p>Continue the story from here...</p>
-          </div>
+  <% if user_signed_in? %>
+    <span class='hover-container grey-text'>
+      <div class="card animated flipInX">
+        <div class="card-content inactive-content">
+          <i class="material-icons right r90 md-36 green-text">call_split</i>
+          Click to branch from here
+        </div>
+        <div class="card-content active-content">
+          <%= form_for chunk.actions.new do |f| %>
+            <input type="text" name="branch[title]" placeholder="Branch title" autocomplete="off" />
+            <div class="branch-text" contenteditable="true">
+              <p>Continue the story from here...</p>
+            </div>
 
-          <div class="advanced-options">
-            <ul class="collapsible">
-              <li>
-                <div class="collapsible-header">
-                  <i class="material-icons">bookmark</i>
-                  Description
-                </div>
-                <div class="collapsible-body">
-                  <textarea style="width: 100%; height: 200px" name="branch[description]" placeholder="Describe this branch for potential readers"></textarea>
-                  <p class="grey-text text-darken-3 help-text">
-                    This is shown to readers to help them select which branch they'd like to continue reading. 
-                    A summary is very helpful, but a hook works too.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header">
-                  <i class="material-icons">palette</i>
-                  Colors
-                </div>
-                <div class="collapsible-body">
-                  <div class="option-title">
-                    Background color
+            <div class="advanced-options">
+              <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">bookmark</i>
+                    Description
                   </div>
-                  <input type="text" name="branch[background_color]" value="#FFFFFF" />
-      
-                  <div class="option-title">
-                    Text color
+                  <div class="collapsible-body">
+                    <textarea style="width: 100%; height: 200px" name="branch[description]" placeholder="Describe this branch for potential readers"></textarea>
+                    <p class="grey-text text-darken-3 help-text">
+                      This is shown to readers to help them select which branch they'd like to continue reading. 
+                      A summary is very helpful, but a hook works too.
+                    </p>
                   </div>
-                  <input type="text" name="branch[text_color]" value="#000000" />
-                </div>
-              </li>
-            </ul>
-          </div>
+                </li>
+                <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">palette</i>
+                    Colors
+                  </div>
+                  <div class="collapsible-body">
+                    <div class="option-title">
+                      Background color
+                    </div>
+                    <input type="text" name="branch[background_color]" value="#FFFFFF" />
+        
+                    <div class="option-title">
+                      Text color
+                    </div>
+                    <input type="text" name="branch[text_color]" value="#000000" />
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <a href="#" class="show-advanced-options-link left">Show/hide advanced options</a>
-          <span class="submit">
-            <%= f.button "Save your branch", 
-                  class: 'js-submit-branch right waves-effect waves-light btn green white-text'
-            %>
-          </span>
-          <div class="clearfix"></div>
-        <% end %>
+            <a href="#" class="show-advanced-options-link left">Show/hide advanced options</a>
+            <span class="submit">
+              <%= f.button "Save your branch", 
+                    class: 'js-submit-branch right waves-effect waves-light btn green white-text'
+              %>
+            </span>
+            <div class="clearfix"></div>
+          <% end %>
+        </div>
       </div>
-    </div>
-  </span>
+    </span>
+  <% end %>
 </div>
